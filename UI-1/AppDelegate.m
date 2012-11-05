@@ -7,13 +7,14 @@
 //
 
 #import "AppDelegate.h"
-
+#import "MyViewController.h"
 @implementation AppDelegate
 
 @synthesize window = _window;
-
+@synthesize myVC=_myVC;//生成set，get方法
 - (void)dealloc
 {
+    [_myVC release]; 
     [_window release];
     [super dealloc];
 }
@@ -21,6 +22,13 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    
+    MyViewController *myViewController=[[MyViewController alloc]init];
+    self.window.rootViewController=myViewController;
+    [myViewController release];
+    
+    
+    
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
